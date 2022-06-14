@@ -7,6 +7,8 @@ import AuthContexts from './src/contexts/auth';
 
 import Routes from './src/routes';
 
+console.disableYellowBox = true;
+
 export default function App() {
   return (
     <NavigationContainer>

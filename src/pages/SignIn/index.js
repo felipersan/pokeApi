@@ -21,7 +21,11 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
-  const {user, setUser} = useContext(AuthContext);
+  const {user, setUser, signIn} = useContext(AuthContext);
+
+  function handleSignIn() {
+    signIn(email, password);
+  }
 
   return (
     <Background>
@@ -52,7 +56,7 @@ export default function SignIn() {
           <Element />
         </AreaInput>
         <ViewBtn>
-          <Button>
+          <Button onPress={handleSignIn}>
             <TextBtn>Fazer Login</TextBtn>
           </Button>
         </ViewBtn>

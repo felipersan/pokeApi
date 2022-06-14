@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {View, Text} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
+import {AuthContext} from '../../contexts/auth';
 
 import {
   Background,
@@ -21,6 +22,11 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
+  const {signUp} = useContext(AuthContext);
+
+  function handleSignUp() {
+    signUp(name, email, password);
+  }
 
   return (
     <Background>
@@ -70,7 +76,7 @@ export default function SignUp() {
           <Element />
         </AreaInput>
         <ViewBtn>
-          <Button>
+          <Button onPress={handleSignUp}>
             <TextBtn>Criar Conta</TextBtn>
           </Button>
         </ViewBtn>
