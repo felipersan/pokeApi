@@ -7,6 +7,7 @@ export const PokemonContext = createContext({});
 
 export default function PokemonProvider({children}) {
   const [pokemon, setPokemon] = useState('');
+  const [pokemonDetails, setPokemonDetails] = useState('');
 
   useEffect(() => {
     async function getPokemon() {
@@ -34,7 +35,14 @@ export default function PokemonProvider({children}) {
 
   return (
     <PokemonContext.Provider
-      value={{pokemon, completePokemon, getColor, getType}}>
+      value={{
+        pokemon,
+        completePokemon,
+        getColor,
+        getType,
+        setPokemonDetails,
+        pokemonDetails,
+      }}>
       {children}
     </PokemonContext.Provider>
   );

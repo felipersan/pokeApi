@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {PokemonContext} from '../../contexts/pokemon';
+import {useNavigation} from '@react-navigation/native';
 
 import {
   Carta,
@@ -13,13 +14,20 @@ import {
 } from './styles';
 
 export default function Card({name}) {
-  const {completePokemon, getColor, getType} = useContext(PokemonContext);
+  const {completePokemon, getColor, getType, setPokemonDetails} =
+    useContext(PokemonContext);
   const [pokemon, setPokemon] = useState('');
   const [imagePokemon, setImagePokemon] = useState('');
   const [color, setColor] = useState('');
   const [hex, setHex] = useState('');
   const [type1, setType1] = useState('Poison');
   const [type2, setType2] = useState('');
+  const navigation = useNavigation();
+
+  async function details() {
+    await setPokemonDetails(pokemon);
+    navigation.navigate('Details');
+  }
 
   useEffect(() => {
     switch (color) {
@@ -108,7 +116,7 @@ export default function Card({name}) {
   }, [pokemon]);
 
   return (
-    <Touch>
+    <Touch onPress={details}>
       <Carta color={hex}>
         <Name>{name}</Name>
         <View>

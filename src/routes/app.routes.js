@@ -8,6 +8,8 @@ import Feather from 'react-native-vector-icons/Feather';
 import Home from '../pages/Home';
 import Pokedex from '../pages/Pokedex';
 import Profile from '../pages/Profile';
+import Details from '../pages/Details';
+import News from '../pages/News';
 
 const AppBottomTabs = createBottomTabNavigator();
 
@@ -23,11 +25,18 @@ export default function AppRoutes() {
               iconName = 'home';
               break;
             case 'Pokedex':
-              iconName = 'list';
+              iconName = 'user';
               break;
             case 'Profile':
               iconName = 'settings';
               break;
+            case 'Details':
+              iconName = 'bar-chart';
+              break;
+            case 'News':
+              iconName = 'bell';
+              break;
+
             default:
               iconName = 'circle';
               break;
@@ -47,6 +56,11 @@ export default function AppRoutes() {
         options={{headerShown: false}}
       />
       <AppBottomTabs.Screen
+        name="Details"
+        component={Details}
+        options={{headerShown: false}}
+      />
+      <AppBottomTabs.Screen
         name="Home"
         component={Home}
         options={() => ({
@@ -63,6 +77,12 @@ export default function AppRoutes() {
             </View>
           ),
         })}
+      />
+
+      <AppBottomTabs.Screen
+        name="News"
+        component={News}
+        options={{headerShown: false}}
       />
       <AppBottomTabs.Screen
         name="Profile"
