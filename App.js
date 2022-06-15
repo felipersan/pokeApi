@@ -4,6 +4,7 @@ import firebase from './src/services/firebaseConnection';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthContexts from './src/contexts/auth';
+import PokemonContext from './src/contexts/pokemon';
 
 import Routes from './src/routes';
 
@@ -13,7 +14,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <AuthContexts>
-        <Routes />
+        <PokemonContext>
+          <Routes />
+        </PokemonContext>
       </AuthContexts>
     </NavigationContainer>
   );
