@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import {AuthContext} from '../../contexts/auth';
 import {PokemonContext} from '../../contexts/pokemon';
 import {View, ContainerHeader} from './styles';
@@ -22,6 +22,8 @@ export default function Home() {
       </ContainerHeader>
 
       <FlatList
+        numColumns={2}
+        columnWrapperStyle={style.row}
         data={pokemon}
         keyExtractor={item => item.name}
         renderItem={({item}) => <Card name={item.name} />}
@@ -29,3 +31,10 @@ export default function Home() {
     </View>
   );
 }
+
+const style = StyleSheet.create({
+  row: {
+    flex: 1,
+    justifyContent: 'space-around',
+  },
+});

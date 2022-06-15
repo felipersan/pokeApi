@@ -22,8 +22,13 @@ export default function PokemonProvider({children}) {
     return response.data;
   }
 
+  async function getColor(index) {
+    let response = await api.get(`pokemon-species/${index}/`);
+    return response.data.color.name;
+  }
+
   return (
-    <PokemonContext.Provider value={{pokemon, completePokemon}}>
+    <PokemonContext.Provider value={{pokemon, completePokemon, getColor}}>
       {children}
     </PokemonContext.Provider>
   );
