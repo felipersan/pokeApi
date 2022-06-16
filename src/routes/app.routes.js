@@ -16,6 +16,7 @@ const AppBottomTabs = createBottomTabNavigator();
 export default function AppRoutes() {
   return (
     <AppBottomTabs.Navigator
+      initialRouteName="Home"
       screenOptions={({route}) => ({
         tabBarIcon: ({color, size}) => {
           let iconName;
