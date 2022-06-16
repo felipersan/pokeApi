@@ -33,6 +33,13 @@ export default function PokemonProvider({children}) {
     return response.data.types;
   }
 
+  async function flavorText(index) {
+    let response = await api.get(`pokemon-species/${index}/`);
+    response = response.data.flavor_text_entries[0].flavor_text;
+    response = response.replace(/\n/g, ' ');
+    return response;
+  }
+
   return (
     <PokemonContext.Provider
       value={{
@@ -42,6 +49,7 @@ export default function PokemonProvider({children}) {
         getType,
         setPokemonDetails,
         pokemonDetails,
+        flavorText,
       }}>
       {children}
     </PokemonContext.Provider>

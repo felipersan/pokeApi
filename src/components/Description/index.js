@@ -8,7 +8,7 @@ import About from './About';
 import {Container, Text, AreaBtn, Btn, TextBtn, AreaScreen} from './style';
 
 export default function Description() {
-  const [textColorAbout, setTextColorAbout] = useState('#bebebe');
+  const [textColorAbout, setTextColorAbout] = useState('#121212');
   const [textColorStats, setTextColorStats] = useState('#bebebe');
   const [textColorEvolution, setTextColorEvolution] = useState('#bebebe');
   const [textColorMoves, setTextColorMoves] = useState('#bebebe');
@@ -20,6 +20,7 @@ export default function Description() {
       setTextColorEvolution('#bebebe');
       setTextColorMoves('#bebebe');
       setTextColorStats('#bebebe');
+      setScreen('About');
     }
   }
   function handleMoves() {
