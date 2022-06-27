@@ -1,6 +1,5 @@
+import {getTabBarHeight} from '@react-navigation/bottom-tabs/lib/typescript/src/views/BottomTabBar';
 import React, {createContext, useState, useEffect} from 'react';
-import firebase from '../services/firebaseConnection';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../services/api';
 
 export const PokemonContext = createContext({});
@@ -8,6 +7,7 @@ export const PokemonContext = createContext({});
 export default function PokemonProvider({children}) {
   const [pokemon, setPokemon] = useState('');
   const [pokemonDetails, setPokemonDetails] = useState('');
+  const [gabi, setGabi] = useState('Gabrielle');
 
   useEffect(() => {
     async function getPokemon() {
@@ -50,6 +50,8 @@ export default function PokemonProvider({children}) {
         setPokemonDetails,
         pokemonDetails,
         flavorText,
+        setGabi,
+        gabi,
       }}>
       {children}
     </PokemonContext.Provider>
